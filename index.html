@@ -18,7 +18,7 @@
     <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">Contact Details</h2>
     <p class="mt-2 text-lg/8 text-gray-600">Contact Details of Visitors in PLASTASIA-2025 EXHIBITION</p>
   </div>
-  <form  method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+  <form id="formData" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
       <div>
         <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">First name</label>
@@ -70,10 +70,38 @@
       </div>
       
     <div class="mt-10">
-      <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's Submit details</button>
+      <button type="submit" class="block hover:cursor-pointer w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's Submit details</button>
     </div>
   </form>
 </div>
+<script>
+const form = document.getElementById("formData");
+const inputs = document.querySelectorAll("input");
+const textArea = document.querySelector("textarea");
+const formData = {}
+inputs.forEach(elem=>{
 
+elem.addEventListener("change", function(e){
+const value = e.currentTarget.value
+const name = e.currentTarget.name
+formData[name]=value
+})
+})
+textArea.addEventListener("change", function(e){
+const value = e.currentTarget.value
+const name = e.currentTarget.name
+formData[name]=value
+})
+
+form.addEventListener("submit", function(e){
+e.preventDefault()
+console.log(formData)
+inputs.forEach(elem=>{
+elem.value = ""
+})
+textArea.value = ""
+})
+
+</script>
 </body>
 </html>
