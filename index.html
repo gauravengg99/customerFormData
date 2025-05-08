@@ -99,7 +99,7 @@ form.addEventListener("submit", function(e){
 e.preventDefault()
 axios.post('https://customerdata-rqbq.onrender.com/customer',formData)
   .then(function (response) {
-    alert(`${response?.data?.data[0].firstName} has been successfully Saved`)
+    alert(`${response?.data?.data[0].firstName ? response?.data?.data[0].firstName : "Customer"} has been successfully Saved`)
   })
   .catch(function (error) {
     console.log(error);
